@@ -8,6 +8,7 @@ module.exports = {
     "overrides": [
         {
             "env": {
+                "es2021": true,
                 "node": true
             },
             "files": [
