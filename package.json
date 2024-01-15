@@ -3,13 +3,16 @@
   "private": true,
   "version": "0.0.1",
   "description": "Fragments back-end API",
-    "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hamodi-9/DPS955-Lab1.git"
+    "url": "git+https://github.com/Hamodi-9/DPS955-fragments.git"
   },
   "author": "Mo Sarv",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "prettier": "3.2.2"
+  }
 }
