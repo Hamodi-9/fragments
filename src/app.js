@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
-const authenticate = require('./auth');
 
 const passport = require('passport');
+const authenticate = require('./auth');
 
 // author and version from our package.json file
 const { author, version } = require('../package.json');
@@ -12,7 +12,12 @@ const { author, version } = require('../package.json');
 const logger = require('./logger');
 const pino = require('pino-http')({
   logger,
-});  
+});
+
+passport.use(authenticate.strategy());
+passport.use(authenticate.strategy());
+
+
 
 // Create an express app instance
 const app = express();
@@ -20,27 +25,17 @@ const app = express();
 // Use pino logging middleware
 app.use(pino);
 
-
-
-
-
-// Use gzip/deflate compression middleware
-app.use(compression());
-
-// Set up our passport authentication middleware
-passport.use(authenticate.strategy());
-app.use(passport.initialize());
-
-// Define our routes
-app.use('/', require('./routes'));
 // Use helmetjs security middleware
 app.use(helmet());
 
 // Use CORS middleware
 app.use(cors());
 
+// Use gzip/deflate compression middleware
+app.use(compression());
 
-
+// Define a health check route
+app.use('/', require('./routes'));
 
 // 404 middleware
 app.use((req, res) => {
@@ -52,9 +47,6 @@ app.use((req, res) => {
     },
   });
 });
-
-
-
 
 // Error-handling middleware
 // eslint-disable-next-line no-unused-vars
