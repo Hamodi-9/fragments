@@ -2,12 +2,17 @@ module.exports = {
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2021": true
+        "es2021": true,
+        "node": true,
+        "jest":true
     },
-      globals: {
-    process: 'readonly',
-  },
+    globals: {
+        process: 'readonly',
+    },
     "extends": "eslint:recommended",
+    parserOptions : {
+        ecmaVersion:13
+    },
     "overrides": [
         {
             "env": {
