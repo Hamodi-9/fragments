@@ -39,6 +39,7 @@ app.use('/', require('./routes'));
 
 // 404 middleware
 app.use((req, res) => {
+  // Pass along an error object to the error-handling middleware
   res.status(404).json({
     status: 'error',
     error: {
