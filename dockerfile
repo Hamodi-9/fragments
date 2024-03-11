@@ -29,7 +29,7 @@ COPY ./src ./src
 EXPOSE 8080
 
 # Start the container by running our server
-CMD npm start
+CMD ["npm", "start"]
 
 # Copy our HTPASSWD file
 COPY ./tests/.htpasswd ./tests/.htpasswd
